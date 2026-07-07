@@ -1,5 +1,6 @@
-import ApprovalAccreditation from "@/features/about/components/Accrediation";
+import ApprovalAccreditation from "@/features/about/components/Accreditation";
 import Awards from "@/features/about/components/Awards";
+import Hero from "@/features/about/components/Hero";
 import Introduction from "@/features/about/components/Intro";
 import MessageDesk from "@/features/about/components/MesssageDesk";
 import Mission from "@/features/about/components/Mission";
@@ -8,7 +9,8 @@ import Rules from "@/features/about/components/Rules";
 
 export default function AboutPage() {
   return (
-    <main className="bg-[#FAF8F3]">
+    <main className="">
+      <Hero />
       <Introduction />
 
       <div className="container-custom">

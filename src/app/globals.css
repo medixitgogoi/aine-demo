@@ -1,304 +1,311 @@
 @import "tailwindcss";
 
 :root {
-  /* ==========================================================
+   /* ==========================================================
      BRAND
   ========================================================== */
-  --primary: #264dcf;
-  --primary-light: #4f73e5;
-  --primary-dark: #060d25;
-  --primary-soft: #edf2ff;
-  --primary-foreground: #ffffff;
+   --primary: #2142b2;
+   --primary-light: #4f73e5;
+   --primary-dark: #060d25;
+   --primary-soft: #edf2ff;
+   --primary-foreground: #ffffff;
+   --orange: #cfa826;
 
-  --orange: #cfa826;
+   --cta: #F5C76E;
+   --hover-cta: #e0b45a;
 
-  /* ==========================================================
+   --secondary-cta: #6B85D6;
+   --secondary-cta-hover: #8a9bd8;
+
+   /* ==========================================================
      BACKGROUNDS
   ========================================================== */
-  --background: #f7f8fb;
-  --background-secondary: #f1f4fa;
-  --background-tertiary: #eef2f8;
+   --background: #f7f8fb;
+   --background-dark: #071231;
+   --background-secondary: #f1f4fa;
+   --background-tertiary: #eef2f8;
+   --foreground: #111827;
 
-  --foreground: #111827;
-
-  /* ==========================================================
+   /* ==========================================================
      SURFACES
   ========================================================== */
-  --card: #ffffff;
-  --card-hover: #fcfdff;
-  --card-muted: #f9fafc;
+   --card: #ffffff;
+   --card-hover: #fcfdff;
+   --card-muted: #f9fafc;
+   --card-foreground: #111827;
+   --card-heading: #0f172a;
+   --card-subheading: #475569;
+   --card-description: #64748b;
 
-  --card-foreground: #111827;
-  --card-heading: #0f172a;
-  --card-subheading: #475569;
-  --card-description: #64748b;
+   --card-light-bg: #c0cdf5;
 
-  /* ==========================================================
+   /* ==========================================================
      SECTION COLORS
   ========================================================== */
-  --section-light: #ffffff;
-  --section-soft: #f8fafc;
-  --section-primary: #edf2ff;
-  --section-dark: #0f172a;
+   --section-light: #ffffff;
+   --section-soft: #f8fafc;
+   --section-primary: #edf2ff;
+   --section-dark: #0f172a;
 
-  /* ==========================================================
+   /* ==========================================================
      TEXT COLORS
   ========================================================== */
-  --text-primary: #111827;
-  --text-secondary: #374151;
-  --text-tertiary: #6b7280;
-  --text-muted: #94a3b8;
-  --text-white: #ffffff;
-  --text-link: var(--primary);
+   --text-primary: #111827;
+   --text-secondary: #374151;
+   --text-tertiary: #6b7280;
+   --text-muted: #94a3b8;
+   --text-white: #ffffff;
+   --text-link: var(--primary);
 
-  /* ==========================================================
+   /* ==========================================================
      BUTTONS
   ========================================================== */
-  --button-primary: var(--primary);
-  --button-primary-hover: #1d3fb0;
-  --button-primary-text: #ffffff;
+   --button-primary: var(--primary);
+   --button-primary-hover: #1d3fb0;
+   --button-primary-text: #ffffff;
+   --button-secondary: #ffffff;
+   --button-secondary-hover: #f8fafc;
+   --button-secondary-text: var(--primary);
+   --button-outline: #ffffff;
+   --button-outline-border: #cbd5e1;
+   --button-outline-hover: #f8fafc;
 
-  --button-secondary: #ffffff;
-  --button-secondary-hover: #f8fafc;
-  --button-secondary-text: var(--primary);
-
-  --button-outline: #ffffff;
-  --button-outline-border: #cbd5e1;
-  --button-outline-hover: #f8fafc;
-
-  /* ==========================================================
+   /* ==========================================================
      ACCENTS
   ========================================================== */
-  --accent: #edf2ff;
-  --accent-light: #f5f8ff;
-  --accent-foreground: var(--primary);
+   --accent: #edf2ff;
+   --accent-light: #f5f8ff;
+   --accent-foreground: var(--primary);
 
-  /* ==========================================================
+   /* ==========================================================
      UI
   ========================================================== */
-  --border: #e5e7eb;
-  --border-light: #eef2f7;
-  --border-strong: #cbd5e1;
+   --border: #e5e7eb;
+   --border-light: #eef2f7;
+   --border-strong: #cbd5e1;
+   --divider: #edf2f7;
+   --input: #d1d5db;
+   --input-bg: #ffffff;
+   --input-focus: var(--primary);
+   --ring: var(--primary);
 
-  --divider: #edf2f7;
-
-  --input: #d1d5db;
-  --input-bg: #ffffff;
-  --input-focus: var(--primary);
-
-  --ring: var(--primary);
-
-  /* ==========================================================
+   /* ==========================================================
      NAVBAR
   ========================================================== */
-  --navbar-bg: rgba(255, 255, 255, 0.9);
-  --navbar-text: #1f2937;
-  --navbar-hover: var(--primary);
-  --navbar-border: rgba(226, 232, 240, .7);
+   --navbar-bg: rgba(255, 255, 255, 0.9);
+   --navbar-text: #1f2937;
+   --navbar-hover: var(--primary);
+   --navbar-border: rgba(226, 232, 240, .7);
 
-  /* ==========================================================
+   /* ==========================================================
      FOOTER
   ========================================================== */
-  --footer-bg: #0f172a;
-  --footer-heading: #ffffff;
-  --footer-text: #cbd5e1;
-  --footer-muted: #94a3b8;
-  --footer-link-hover: #ffffff;
+   --footer-bg: #0f172a;
+   --footer-heading: #ffffff;
+   --footer-text: #cbd5e1;
+   --footer-muted: #94a3b8;
+   --footer-link-hover: #ffffff;
 
-  /* ==========================================================
+   /* ==========================================================
      BADGES
   ========================================================== */
-  --badge-primary-bg: #edf2ff;
-  --badge-primary-text: var(--primary);
+   --badge-primary-bg: #edf2ff;
+   --badge-primary-text: var(--primary);
+   --badge-success-bg: #dcfce7;
+   --badge-success-text: #166534;
+   --badge-warning-bg: #fef3c7;
+   --badge-warning-text: #92400e;
+   --badge-danger-bg: #fee2e2;
+   --badge-danger-text: #991b1b;
 
-  --badge-success-bg: #dcfce7;
-  --badge-success-text: #166534;
-
-  --badge-warning-bg: #fef3c7;
-  --badge-warning-text: #92400e;
-
-  --badge-danger-bg: #fee2e2;
-  --badge-danger-text: #991b1b;
-
-  /* ==========================================================
+   /* ==========================================================
      STATUS
   ========================================================== */
-  --success: #16a34a;
-  --warning: #f59e0b;
-  --destructive: #dc2626;
-  --info: var(--primary);
+   --success: #16a34a;
+   --warning: #f59e0b;
+   --destructive: #dc2626;
+   --info: var(--primary);
 
-  /* ==========================================================
+   /* ==========================================================
      SHADOWS
   ========================================================== */
-  --shadow-sm: 0 2px 6px rgba(15, 23, 42, .05);
-  --shadow-md: 0 8px 24px rgba(15, 23, 42, .08);
-  --shadow-lg: 0 18px 40px rgba(15, 23, 42, .12);
+   --shadow-sm: 0 2px 6px rgba(15, 23, 42, .05);
+   --shadow-md: 0 8px 24px rgba(15, 23, 42, .08);
+   --shadow-lg: 0 18px 40px rgba(15, 23, 42, .12);
 
-  /* ==========================================================
+   /* ==========================================================
      RADIUS
   ========================================================== */
-  --radius-sm: .5rem;
-  --radius-md: .75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+   --radius-sm: .5rem;
+   --radius-md: .75rem;
+   --radius-lg: 1rem;
+   --radius-xl: 1.5rem;
 }
 
 @theme inline {
-  /* ==========================================================
+   /* ==========================================================
      BACKGROUNDS
   ========================================================== */
-  --color-background: var(--background);
-  --color-background-secondary: var(--background-secondary);
-  --color-background-tertiary: var(--background-tertiary);
+   --color-background: var(--background);
+   --color-background-dark: var(--background-dark);
+   --color-background-secondary: var(--background-secondary);
+   --color-background-tertiary: var(--background-tertiary);
 
-  /* ==========================================================
+   /* ==========================================================
      BRAND
   ========================================================== */
-  --color-primary: var(--primary);
-  --color-primary-light: var(--primary-light);
-  --color-primary-dark: var(--primary-dark);
-  --color-primary-soft: var(--primary-soft);
-  --color-primary-foreground: var(--primary-foreground);
+   --color-primary: var(--primary);
+   --color-primary-light: var(--primary-light);
+   --color-primary-dark: var(--primary-dark);
+   --color-primary-soft: var(--primary-soft);
+   --color-primary-foreground: var(--primary-foreground);
 
-  --color-orange: var(--ornage);
+   --color-orange: var(--orange);
 
-  /* ==========================================================
+   /* cta */
+   --color-cta: var(--cta);
+   --color-hover-cta: var(--hover-cta);
+   --color-secondary-cta: var(--secondary-cta);
+   --color-secondary-cta-hover: var(--secondary-cta-hover);
+
+   /* ==========================================================
      FOREGROUND
   ========================================================== */
-  --color-foreground: var(--foreground);
+   --color-foreground: var(--foreground);
 
-  /* ==========================================================
+   /* ==========================================================
      CARDS
   ========================================================== */
-  --color-card: var(--card);
-  --color-card-hover: var(--card-hover);
-  --color-card-muted: var(--card-muted);
+   --color-card: var(--card);
+   --color-card-hover: var(--card-hover);
+   --color-card-muted: var(--card-muted);
 
-  --color-card-foreground: var(--card-foreground);
-  --color-card-heading: var(--card-heading);
-  --color-card-subheading: var(--card-subheading);
-  --color-card-description: var(--card-description);
+   --color-card-foreground: var(--card-foreground);
+   --color-card-heading: var(--card-heading);
+   --color-card-subheading: var(--card-subheading);
+   --color-card-description: var(--card-description);
 
-  /* ==========================================================
+   --color-card-light-bg: var(--card-light-bg);
+
+   /* ==========================================================
      SECTIONS
   ========================================================== */
-  --color-section-light: var(--section-light);
-  --color-section-soft: var(--section-soft);
-  --color-section-primary: var(--section-primary);
-  --color-section-dark: var(--section-dark);
+   --color-section-light: var(--section-light);
+   --color-section-soft: var(--section-soft);
+   --color-section-primary: var(--section-primary);
+   --color-section-dark: var(--section-dark);
 
-  /* ==========================================================
+   /* ==========================================================
      TEXT
   ========================================================== */
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
-  --color-text-muted: var(--text-muted);
-  --color-text-white: var(--text-white);
-  --color-text-link: var(--text-link);
+   --color-text-primary: var(--text-primary);
+   --color-text-secondary: var(--text-secondary);
+   --color-text-tertiary: var(--text-tertiary);
+   --color-text-muted: var(--text-muted);
+   --color-text-white: var(--text-white);
+   --color-text-link: var(--text-link);
 
-  /* ==========================================================
+   /* ==========================================================
      BUTTONS
   ========================================================== */
-  --color-button-primary: var(--button-primary);
-  --color-button-primary-hover: var(--button-primary-hover);
-  --color-button-primary-text: var(--button-primary-text);
+   --color-button-primary: var(--button-primary);
+   --color-button-primary-hover: var(--button-primary-hover);
+   --color-button-primary-text: var(--button-primary-text);
 
-  --color-button-secondary: var(--button-secondary);
-  --color-button-secondary-hover: var(--button-secondary-hover);
-  --color-button-secondary-text: var(--button-secondary-text);
+   --color-button-secondary: var(--button-secondary);
+   --color-button-secondary-hover: var(--button-secondary-hover);
+   --color-button-secondary-text: var(--button-secondary-text);
 
-  --color-button-outline: var(--button-outline);
-  --color-button-outline-border: var(--button-outline-border);
-  --color-button-outline-hover: var(--button-outline-hover);
+   --color-button-outline: var(--button-outline);
+   --color-button-outline-border: var(--button-outline-border);
+   --color-button-outline-hover: var(--button-outline-hover);
 
-  /* ==========================================================
+   /* ==========================================================
      ACCENTS
   ========================================================== */
-  --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-accent-foreground: var(--accent-foreground);
+   --color-accent: var(--accent);
+   --color-accent-light: var(--accent-light);
+   --color-accent-foreground: var(--accent-foreground);
 
-  /* ==========================================================
+   /* ==========================================================
      BORDERS & UI
   ========================================================== */
-  --color-border: var(--border);
-  --color-border-light: var(--border-light);
-  --color-border-strong: var(--border-strong);
+   --color-border: var(--border);
+   --color-border-light: var(--border-light);
+   --color-border-strong: var(--border-strong);
 
-  --color-divider: var(--divider);
+   --color-divider: var(--divider);
 
-  --color-input: var(--input);
-  --color-input-bg: var(--input-bg);
-  --color-input-focus: var(--input-focus);
+   --color-input: var(--input);
+   --color-input-bg: var(--input-bg);
+   --color-input-focus: var(--input-focus);
 
-  --color-ring: var(--ring);
+   --color-ring: var(--ring);
 
-  /* ==========================================================
+   /* ==========================================================
      NAVBAR
   ========================================================== */
-  --color-navbar-bg: var(--navbar-bg);
-  --color-navbar-text: var(--navbar-text);
-  --color-navbar-hover: var(--navbar-hover);
-  --color-navbar-border: var(--navbar-border);
+   --color-navbar-bg: var(--navbar-bg);
+   --color-navbar-text: var(--navbar-text);
+   --color-navbar-hover: var(--navbar-hover);
+   --color-navbar-border: var(--navbar-border);
 
-  /* ==========================================================
+   /* ==========================================================
      FOOTER
   ========================================================== */
-  --color-footer-bg: var(--footer-bg);
-  --color-footer-heading: var(--footer-heading);
-  --color-footer-text: var(--footer-text);
-  --color-footer-muted: var(--footer-muted);
-  --color-footer-link-hover: var(--footer-link-hover);
+   --color-footer-bg: var(--footer-bg);
+   --color-footer-heading: var(--footer-heading);
+   --color-footer-text: var(--footer-text);
+   --color-footer-muted: var(--footer-muted);
+   --color-footer-link-hover: var(--footer-link-hover);
 
-  /* ==========================================================
+   /* ==========================================================
      BADGES
   ========================================================== */
-  --color-badge-primary-bg: var(--badge-primary-bg);
-  --color-badge-primary-text: var(--badge-primary-text);
+   --color-badge-primary-bg: var(--badge-primary-bg);
+   --color-badge-primary-text: var(--badge-primary-text);
 
-  --color-badge-success-bg: var(--badge-success-bg);
-  --color-badge-success-text: var(--badge-success-text);
+   --color-badge-success-bg: var(--badge-success-bg);
+   --color-badge-success-text: var(--badge-success-text);
 
-  --color-badge-warning-bg: var(--badge-warning-bg);
-  --color-badge-warning-text: var(--badge-warning-text);
+   --color-badge-warning-bg: var(--badge-warning-bg);
+   --color-badge-warning-text: var(--badge-warning-text);
 
-  --color-badge-danger-bg: var(--badge-danger-bg);
-  --color-badge-danger-text: var(--badge-danger-text);
+   --color-badge-danger-bg: var(--badge-danger-bg);
+   --color-badge-danger-text: var(--badge-danger-text);
 
-  /* ==========================================================
+   /* ==========================================================
      STATUS
   ========================================================== */
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-destructive: var(--destructive);
-  --color-info: var(--info);
+   --color-success: var(--success);
+   --color-warning: var(--warning);
+   --color-destructive: var(--destructive);
+   --color-info: var(--info);
 
-  /* ==========================================================
+   /* ==========================================================
      RADIUS
   ========================================================== */
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-xl: var(--radius-xl);
+   --radius-sm: var(--radius-sm);
+   --radius-md: var(--radius-md);
+   --radius-lg: var(--radius-lg);
+   --radius-xl: var(--radius-xl);
 }
 
 /* Base Styles */
 html {
-  scroll-behavior: smooth;
+   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+   background: var(--background);
+   color: var(--foreground);
+   font-family: var(--font-poppins), sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Optional Selection Styling */
 ::selection {
-  background: var(--primary);
-  color: var(--primary-foreground);
+   background: var(--primary);
+   color: var(--primary-foreground);
 }

@@ -2,15 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  //   Facebook,
-  //   Instagram,
-  //   Youtube,
-  MapPin,
-  Mail,
-  Phone,
-  Clock3,
-} from "lucide-react";
+import { MapPin, Mail, Phone, Clock3, ArrowUpRight } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa6";
 
 const quickLinks = [
   { name: "About AINE", href: "/about" },
@@ -23,20 +16,34 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-dark text-white">
-      <div className="mx-auto max-w-7xl px-6 py-14 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[1.35fr_0.8fr_1fr]">
-          {/* Left */}
-          <div>
-            <Image
-              src="/images/logos/client-logo-dark-no-bg.png"
-              alt="Asian Institute of Nursing Education"
-              width={320}
-              height={80}
-              className="h-auto w-72"
-            />
+    <footer className="bg-background-dark text-white border-t border-white/10 pt-15 pb-10">
+      <div className="container-custom px-4 mx-auto max-w-7xl">
+        {/* Main Architectural Layout Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-white/10">
+          {/* Column 1: Brand Info & Vision Statement */}
+          <div className="lg:col-span-5 space-y-6">
+            {/* Logo Container */}
+            <div className="relative max-w-md border border-white/10 bg-black/20 px-4 py-3 flex items-center gap-4 rounded-md">
+              {/* Logo */}
+              <div className="shrink-0">
+                <Image
+                  src="/images/logos/client-logo-light.png"
+                  alt="Asian Institute of Nursing Education"
+                  width={140}
+                  height={60}
+                  className="h-12 w-auto object-contain grayscale brightness-200"
+                  priority
+                />
+              </div>
 
-            <p className="mt-6 max-w-md text-[15px] leading-8 text-white/75">
+              {/* Text */}
+              <span className="text-sm md:text-base font-semibold text-white leading-tight">
+                Asian Institute of Nursing Education
+              </span>
+            </div>
+
+            {/* Description Text */}
+            <p className="max-w-md text-sm leading-relaxed text-slate-400">
               We at AINE will be accountable for imparting quality education to
               prepare competent nursing professionals for the welfare of the
               society. We will give individualized attention to every student,
@@ -44,130 +51,158 @@ export default function Footer() {
               excellence.
             </p>
 
-            <div className="mt-8 flex items-center gap-3">
+            {/* Social Handles using Fa Icons */}
+            <div className="flex items-center gap-3 pt-2">
               {[
                 {
-                  //   icon: <Youtube size={18} />,
+                  icon: <FaYoutube className="h-4 w-4" />,
                   href: "#",
+                  name: "Youtube",
                 },
                 {
-                  //   icon: <Instagram size={18} />,
+                  icon: <FaInstagram className="h-4 w-4" />,
                   href: "#",
+                  name: "Instagram",
                 },
                 {
-                  //   icon: <Facebook size={18} />,
+                  icon: <FaFacebookF className="h-4 w-4" />,
                   href: "#",
+                  name: "Facebook",
                 },
               ].map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  className="rounded-full border border-white/10 bg-white/5 p-2.5 text-cyan-300 transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white"
+                  aria-label={item.name}
+                  className="flex h-9 w-9 items-center justify-center border border-white/10 bg-white/[0.02] text-slate-400 transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white rounded-full cursor-pointer"
                 >
-                  {/* {item.icon} */}
+                  {item.icon}
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-semibold tracking-wide text-cyan-300">
-              Quick Links
-            </h3>
+          {/* Column 2: Quick Links */}
+          <div className="lg:col-span-3 lg:pl-8">
+            <div className="flex items-center gap-2">
+              <div className="h-1 w-1 bg-card-light-bg rounded-full" />
+              <h3 className="text-sm font-black uppercase tracking-wider text-white">
+                Quick Links
+              </h3>
+            </div>
 
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-6 space-y-3.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="group inline-flex text-[15px] text-white/75 transition"
+                    className="group flex items-center justify-between text-sm text-slate-400 transition-colors duration-200 hover:text-card-light-bg cursor-pointer"
                   >
-                    <span className="border-b border-transparent transition-all group-hover:border-white group-hover:text-white">
+                    <span className="relative py-0.5">
                       {link.name}
+                      <span className="absolute bottom-0 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
                     </span>
+                    <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-y-0.5 translate-x-0.5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0" />
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-xl font-semibold tracking-wide text-cyan-300">
-              Contact Details
-            </h3>
+          {/* Column 3: Contact Details */}
+          <div className="lg:col-span-4 lg:pl-4 space-y-6">
+            <div className="flex items-center gap-2">
+              <div className="h-1 w-1 bg-card-light-bg rounded-full" />
+              <h3 className="text-sm font-black uppercase tracking-wider text-white">
+                Contact Details
+              </h3>
+            </div>
 
-            <div className="mt-6 space-y-6">
-              <div className="flex items-start gap-4">
-                <MapPin className="mt-1 h-5 w-5 shrink-0 text-cyan-300" />
-
-                <p className="text-[15px] leading-7 text-white/75">
-                  IIT Road, Near IIT Sila Grant,
-                  <br />
-                  Adjacent to GNRC Hospitals,
-                  <br />
-                  North Guwahati – 781031,
-                  <br />
-                  Assam
+            <div className="space-y-5">
+              <div className="flex items-start gap-4 group">
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center border border-white/5 bg-white/[0.01] text-slate-400 group-hover:text-card-light-bg group-hover:border-card-light-bg/40 transition-colors rounded-full">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <p className="text-sm leading-relaxed text-slate-400 transition-colors group-hover:text-card-light-bg">
+                  IIT Road, Near IIT Sila Grant, Adjacent to GNRC Hospitals,
+                  North Guwahati – 781031, Assam
                 </p>
               </div>
 
-              <div className="flex items-start gap-4">
-                <Mail className="mt-1 h-5 w-5 shrink-0 text-cyan-300" />
-
-                <div className="space-y-1 text-[15px] text-white/75">
+              <div className="flex items-start gap-4 group">
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center border border-white/5 bg-white/[0.01] text-slate-400 group-hover:text-card-light-bg group-hover:border-card-light-bg/40 transition-colors rounded-full">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <div className="space-y-1 text-sm text-slate-400">
                   <a
                     href="mailto:aine.guwahati@yahoo.com"
-                    className="block transition hover:text-white"
+                    className="block transition hover:text-card-light-bg"
                   >
                     aine.guwahati@yahoo.com
                   </a>
-
                   <a
                     href="mailto:info@aine.org.in"
-                    className="block transition hover:text-white"
+                    className="block transition hover:text-card-light-bg"
                   >
                     info@aine.org.in
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <Phone className="h-5 w-5 shrink-0 text-cyan-300" />
-
+              <div className="flex items-start gap-4 group">
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center border border-white/5 bg-white/[0.01] text-slate-400 group-hover:text-card-light-bg group-hover:border-card-light-bg/40 transition-colors rounded-full">
+                  <Phone className="h-4 w-4" />
+                </div>
                 <a
                   href="tel:+918254036679"
-                  className="text-[15px] text-white/75 transition hover:text-white"
+                  className="text-sm text-slate-400 transition hover:text-card-light-bg self-center"
                 >
                   +91 82540 36679
                 </a>
               </div>
 
-              <div className="flex items-start gap-4">
-                <Clock3 className="mt-1 h-5 w-5 shrink-0 text-cyan-300" />
-
-                <div className="text-[15px] leading-7 text-white/75">
-                  <p>9 AM – 4 PM, Monday – Friday</p>
-                  <p>9 AM – 1 PM, Saturday</p>
+              <div className="flex items-start gap-4 group">
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center border border-white/5 bg-white/[0.01] text-slate-400 group-hover:text-card-light-bg group-hover:border-card-light-bg/40 transition-colors rounded-full">
+                  <Clock3 className="h-4 w-4" />
+                </div>
+                <div className="text-sm leading-relaxed text-slate-400 transition-colors group-hover:text-slate-300">
+                  <p>
+                    <span className="text-slate-500 font-medium">
+                      Mon – Fri:
+                    </span>{" "}
+                    9 AM – 4 PM
+                  </p>
+                  <p>
+                    <span className="text-slate-500 font-medium">
+                      Saturday:
+                    </span>{" "}
+                    9 AM – 1 PM
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-
-        <div className="mt-12 border-t border-white/10 pt-6">
-          <div className="flex flex-col items-center justify-between gap-3 text-center md:flex-row">
-            <p className="text-xs tracking-wide text-white/60">
+        {/* Bottom Utility Grid Block */}
+        <div className="mt-10 pt-4 relative">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+            <p className="text-xs font-medium tracking-wide text-slate-500">
               © 2026 Asian Institute of Nursing Education. All Rights Reserved.
             </p>
 
-            <p className="text-xs tracking-wide text-white/60">
-              Designed & Developed by{" "}
-              <span className="font-medium text-white/80">Ekok Technocrat</span>
-            </p>
+            <div className="flex items-center gap-1.5 text-xs font-medium tracking-wide text-slate-500">
+              <span>Designed & Developed by</span>
+              <Link
+                href="https://ekok.net.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="font-bold text-slate-400 hover:text-card-light-bg transition-colors cursor-pointer">
+                  Ekok Technocrat
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
