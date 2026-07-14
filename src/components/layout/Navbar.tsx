@@ -18,13 +18,10 @@ const Navbar = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY <= 10) {
-        // Absolute top of page -> always show full unscrolled state
         setScrolled(false);
       } else if (currentScrollY > lastScrollY.current) {
-        // Scrolling DOWN -> compress navbar to save space
         setScrolled(true);
       } else if (currentScrollY < lastScrollY.current) {
-        // Scrolling UP -> seamlessly return to beautiful unscrolled state
         setScrolled(false);
       }
 
@@ -46,9 +43,6 @@ const Navbar = () => {
     }, 150);
   };
 
-  const baseClasses =
-    "group w-max inline-flex items-center justify-center px-6 py-3 border border-white/80 cursor-pointer rounded-md bg-cta hover:bg-hover-cta text-black font-semibold tracking-wide shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-500 hover:scale-105";
-
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
@@ -58,8 +52,8 @@ const Navbar = () => {
       <div
         className={`mx-auto w-full max-w-7xl pointer-events-auto rounded-xl flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
           scrolled
-            ? "bg-white/80 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.04)] border border-gray-200/40 py-1.5 px-5 scale-[0.98]"
-            : "bg-white backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.04)] border border-transparent py-4 px-6 scale-100"
+            ? "bg-white/95 backdrop-blur-md shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_15px_30px_-5px_rgba(0,0,0,0.15)] border border-gray-200 py-1.5 px-5 scale-[0.98]"
+            : "bg-white backdrop-blur-md shadow-[0_10px_15px_-3px_rgba(0,0,0,0.08),0_20px_40px_-4px_rgba(0,0,0,0.12)] border border-gray-100 py-4 px-6 scale-100"
         }`}
       >
         {/* LOGO */}
@@ -128,7 +122,7 @@ const Navbar = () => {
                         : "opacity-0 -translate-y-1.5 pointer-events-none"
                     }`}
                   >
-                    <div className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2">
+                    <div className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] p-2">
                       <div className="grid gap-1">
                         {link.dropdownItems.map((item) => {
                           const Icon = item.icon;
@@ -142,11 +136,9 @@ const Navbar = () => {
                                 <Icon className="size-4.5 text-gray-600 group-hover:text-primary transition-colors" />
                               </div>
                               <div className="flex flex-col space-y-0.5">
-                                {/* Increased menu item name to sharp 13px */}
                                 <p className="text-[13px] font-bold text-gray-900 group-hover:text-primary transition-colors leading-tight">
                                   {item.name}
                                 </p>
-                                {/* Increased menu item description to crisp 11px */}
                                 <p className="text-[11px] text-gray-500 font-normal leading-normal">
                                   {item.desc}
                                 </p>
