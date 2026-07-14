@@ -64,7 +64,7 @@ const Navbar = () => {
           <Image
             src="/images/logos/client-logo-dark-no-bg.png"
             alt="AINE Logo"
-            width={scrolled ? 95 : 115}
+            width={scrolled ? 85 : 100}
             height={scrolled ? 38 : 46}
             priority
             className="object-contain transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
