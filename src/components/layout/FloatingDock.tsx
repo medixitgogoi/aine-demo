@@ -17,27 +17,27 @@ const items = [
   {
     icon: Globe,
     label: "360° Tour",
-    href: "/360-tour",
+    href: "#",
   },
   {
     icon: Phone,
     label: "Call",
-    href: "tel:+919999999999",
+    href: "tel:+918254036679",
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    href: "https://wa.me/919999999999",
+    href: "https://wa.me/918254036679",
   },
   {
     icon: Video,
     label: "Demo",
-    href: "/demo",
+    href: "#",
   },
   {
     icon: MapPin,
     label: "Location",
-    href: "https://maps.google.com",
+    href: "https://www.google.com/maps?cid=12017386506753153596&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-GB&source=embed",
   },
 ];
 
@@ -73,13 +73,13 @@ export default function FloatingDock() {
   return (
     <div
       ref={dockRef}
-      className="fixed bottom-6 right-6 z-[9999]"
+      className="fixed bottom-6 right-6 z-[9999] flex flex-col items-center w-14"
     >
-      <div className="flex flex-col-reverse items-center gap-3">
+      <div className="flex flex-col-reverse items-center gap-3 w-full">
         {/* Toggle Button */}
         <button
           onClick={() => setOpen((prev) => !prev)}
-          className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#0d2c63] text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#16408d]"
+          className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1d4c9c] text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#16408d]"
         >
           {open ? (
             <X className="h-5 w-5" />
@@ -110,7 +110,7 @@ export default function FloatingDock() {
               transition={{
                 duration: 0.25,
               }}
-              className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-2xl backdrop-blur-md"
+              className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-2xl backdrop-blur-md w-full"
             >
               {items.map((item, index) => {
                 const Icon = item.icon;

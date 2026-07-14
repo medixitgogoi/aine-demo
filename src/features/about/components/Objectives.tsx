@@ -3,7 +3,7 @@ import { objectives } from "@/utils/objectives";
 
 export default function Objectives() {
   return (
-    <section className="bg-background-dark py-32 px-6 md:px-15">
+    <section id="objectives" className="bg-background-dark py-32 px-6 md:px-15">
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-20 lg:grid-cols-[420px_1fr]">
           {/* Left Sticky Content */}

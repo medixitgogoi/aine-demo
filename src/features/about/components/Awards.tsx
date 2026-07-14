@@ -5,7 +5,7 @@ import SectionHeader from "@/components/section/SectionHeader";
 
 export default function Awards() {
   return (
-    <section className="bg-background-dark py-24 lg:pb-32 border-b border-white/5">
+    <section id="awards" className="bg-background-dark py-24 lg:pb-32 border-b border-white/5">
       <div className="container-custom px-4 mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto flex flex-col items-center justify-center max-w-3xl text-center">
@@ -39,7 +39,7 @@ export default function Awards() {
               />
             </div>
 
-            <p className="mt-8 text-xs font-bold uppercase tracking-[0.25em] text-primary">
+            <p className="mt-8 text-[13px] font-bold uppercase tracking-widest text-primary-light">
               Featured Recognition
             </p>
 
@@ -61,10 +61,10 @@ export default function Awards() {
               education and institutional excellence.
             </p>
 
-            <button className="group mt-8 inline-flex items-center gap-2 font-bold text-sm text-primary hover:text-primary-light transition-colors cursor-pointer">
+            {/* <button className="group mt-8 inline-flex items-center gap-2 font-bold text-sm text-primary hover:text-primary-light transition-colors cursor-pointer">
               Learn More
               <ArrowUpRight className="h-4 w-4 transition duration-300 group-hover/featured:translate-x-0.5 group-hover/featured:-translate-y-0.5" />
-            </button>
+            </button> */}
           </div>
 
           {/* Timeline - With Matching Lighter Surface Layout */}

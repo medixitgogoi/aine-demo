@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="bg-background-dark pt-40 pb-28 px-15">
+    <section id="about" className="bg-background-dark pt-40 pb-28 px-15">
       <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
         {/* Left Content */}
         <div className="text-center lg:text-left">
@@ -29,7 +29,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             {/* Primary CTA */}
-            <PrimaryCta href="/courses" text="Explore Courses" />
+            <PrimaryCta href="/gallery" text="View our gallery" />
 
             {/* Secondary CTA */}
             <Link
@@ -61,7 +61,7 @@ const Hero = () => {
               src="/images/hero/hero2.jpg"
               alt="Nursing Students"
               fill
-              className="object-cover transition duration-700 group-hover:scale-110"
+              className="object-cover transition duration-500 group-hover:scale-110"
             />
 
             {/* Depth overlay */}

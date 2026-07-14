@@ -8,7 +8,7 @@ const page = () => {
     <main className="bg-background text-foreground overflow-hidden">
       <Hero />
       <ContactFormSection />
-      <MapSection />
+      {/* <MapSection /> */}
     </main>
   );
 };

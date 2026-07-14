@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Approvals() {
   return (
-    <section className="bg-background-dark/1 py-24 lg:pb-32">
+    <section id="accreditation" className="bg-background-dark/1 py-24 lg:pb-32">
       <div className="container-custom px-4 mx-auto max-w-7xl">
         {/* Header */}
         <div className="mx-auto flex flex-col items-center justify-center max-w-3xl text-center">

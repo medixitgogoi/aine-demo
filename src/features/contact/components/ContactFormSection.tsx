@@ -1,224 +1,123 @@
 "use client";
 
-import React from "react";
-import {
-  User,
-  Mail,
-  Phone,
-  MessageSquare,
-  FileText,
-  Send,
-  MapPin,
-} from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const ContactFormSection = () => {
   return (
     <section
-      className="w-full py-20 md:py-28"
-      style={{ background: "var(--color-section-soft)" }}
+      id="contact-form"
+      className="w-full py-20 md:py-28 scroll-mt-20 bg-slate-950 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+      {/* Decorative Dark Atmosphere Ambient Glows */}
+      <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none" />
 
-        {/* =========================
-            LEFT: FORM
-        ========================= */}
-        <div
-          className="p-8 md:p-10 rounded-2xl"
-          style={{
-            background: "var(--color-card)",
-            border: "1px solid var(--color-border)",
-            boxShadow: "var(--shadow-md)",
-          }}
-        >
-          {/* Heading */}
-          <div className="mb-8">
-            <h2
-              className="text-2xl md:text-3xl font-semibold mb-2"
-              style={{ color: "var(--color-card-heading)" }}
-            >
-              Send Us a Message
-            </h2>
-            <p
-              className="text-sm"
-              style={{ color: "var(--color-text-secondary)" }}
-            >
-              Fill in the details and our team will get back to you shortly.
-            </p>
-          </div>
-
-          <form className="flex flex-col gap-5">
-
-            {/* Input Field Component */}
-            {[
-              {
-                label: "Full Name",
-                placeholder: "Enter your full name",
-                icon: <User size={18} />,
-                type: "text",
-              },
-              {
-                label: "Email",
-                placeholder: "Enter your email",
-                icon: <Mail size={18} />,
-                type: "email",
-              },
-              {
-                label: "Mobile Number",
-                placeholder: "Enter your mobile number",
-                icon: <Phone size={18} />,
-                type: "tel",
-              },
-              {
-                label: "Subject",
-                placeholder: "Enter subject",
-                icon: <FileText size={18} />,
-                type: "text",
-              },
-            ].map((field, index) => (
-              <div key={index}>
-                <label
-                  className="text-xs mb-1 block font-medium"
-                  style={{ color: "var(--color-text-secondary)" }}
-                >
-                  {field.label}
-                </label>
-
-                <div
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition focus-within:ring-2"
-                  style={{
-                    border: "1px solid var(--color-input)",
-                    background: "var(--color-input-bg)",
-                  }}
-                >
-                  <span style={{ color: "var(--color-text-tertiary)" }}>
-                    {field.icon}
-                  </span>
-
-                  <input
-                    type={field.type}
-                    placeholder={field.placeholder}
-                    className="w-full bg-transparent outline-none text-sm"
-                  />
-                </div>
-              </div>
-            ))}
-
-            {/* Message */}
-            <div>
-              <label
-                className="text-xs mb-1 block font-medium"
-                style={{ color: "var(--color-text-secondary)" }}
-              >
-                Message
-              </label>
-
-              <div
-                className="flex gap-3 px-3 py-2.5 rounded-lg focus-within:ring-2"
-                style={{
-                  border: "1px solid var(--color-input)",
-                  background: "var(--color-input-bg)",
-                }}
-              >
-                <span style={{ color: "var(--color-text-tertiary)" }}>
-                  <MessageSquare size={18} />
-                </span>
-
-                <textarea
-                  rows={4}
-                  placeholder="Write your message..."
-                  className="w-full bg-transparent outline-none text-sm resize-none"
-                />
-              </div>
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              className="mt-4 flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all hover:scale-[1.02]"
-              style={{
-                background: "var(--color-button-primary)",
-                color: "var(--color-button-primary-text)",
-                boxShadow: "var(--shadow-sm)",
-              }}
-            >
-              <Send size={16} />
-              Submit Message
-            </button>
-
-          </form>
-        </div>
-
-        {/* =========================
-            RIGHT: CONTACT INFO
-        ========================= */}
-        <div
-          className="p-8 md:p-10 rounded-2xl flex flex-col gap-8"
-          style={{
-            background: "linear-gradient(135deg, #3b3b8f, #2d2d6e)",
-            color: "white",
-            boxShadow: "var(--shadow-md)",
-          }}
-        >
-
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-stretch relative z-10">
+        {/* Left Side Content - Premium Light Card Block over Dark BG */}
+        <div className="p-8 md:p-10 bg-card-light-bg rounded-2xl flex flex-col gap-8 border border-white/5 shadow-2xl justify-between">
           <div>
-            <h3 className="text-2xl font-semibold mb-2">
+            <h3 className="text-2xl font-black text-black tracking-tight mb-1">
               Get in Touch
             </h3>
-            <p className="text-sm opacity-80">
+            <p className="text-sm text-slate-600 font-medium">
               Prefer direct communication? Reach out using the details below.
             </p>
           </div>
 
-          {/* Info Cards */}
+          {/* Info Rows Container */}
           <div className="flex flex-col gap-6">
-
-            {/* Phone */}
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-lg bg-white/10">
+            {/* Phone Entry */}
+            <div className="flex items-start gap-4 group">
+              <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 transition-colors duration-300 group-hover:bg-blue-500/20">
                 <Phone size={18} />
               </div>
               <div>
-                <h4 className="text-sm font-semibold">Contact No.</h4>
-                <p className="text-sm opacity-80 mt-1">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                  Contact No.
+                </h4>
+                <Link
+                  href="tel:+918254036679"
+                  className="text-sm font-semibold text-black mt-1.5 transition-colors duration-300 group-hover:text-blue-600"
+                >
                   +91 82540 36679
-                </p>
+                </Link>
               </div>
             </div>
 
-            {/* Email */}
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-lg bg-white/10">
+            {/* Email Entry */}
+            <div className="flex items-start gap-4 group">
+              <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-500/20">
                 <Mail size={18} />
               </div>
               <div>
-                <h4 className="text-sm font-semibold">Email</h4>
-                <p className="text-sm opacity-80 mt-1">
-                  aine.guwahati@yahoo.com
-                </p>
-                <p className="text-sm opacity-80">
-                  info@aine.org.in
-                </p>
+                <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                  Email Address
+                </h4>
+                <div className="mt-1.5 space-y-0.5">
+                  <Link
+                    href="mailto:aine.guwahati@yahoo.com"
+                    className="block text-sm font-semibold text-black transition-colors duration-300 group-hover:text-indigo-600"
+                  >
+                    aine.guwahati@yahoo.com
+                  </Link>
+
+                  <Link
+                    href="mailto:info@aine.org.in"
+                    className="block text-sm font-semibold text-black transition-colors duration-300 group-hover:text-indigo-600"
+                  >
+                    info@aine.org.in
+                  </Link>
+                </div>
               </div>
             </div>
 
-            {/* Address */}
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-lg bg-white/10">
+            {/* Address Entry */}
+            <div className="flex items-start gap-4 group">
+              <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-600 transition-colors duration-300 group-hover:bg-purple-500/20">
                 <MapPin size={18} />
               </div>
               <div>
-                <h4 className="text-sm font-semibold">Address</h4>
-                <p className="text-sm opacity-80 mt-1 leading-relaxed">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                  Campus Address
+                </h4>
+                <p className="text-sm font-medium text-slate-800 mt-1.5 leading-relaxed max-w-sm">
                   IIT Road, Near IIT Sila Grant, Adjacent to GNRC Hospitals,
                   North Guwahati - 781031, Assam
                 </p>
               </div>
             </div>
-
           </div>
-
         </div>
 
+        {/* Right Side Slot Holder for Map */}
+        <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl min-h-[400px] h-full group">
+          {/* Google Map Embed */}
+          <iframe
+            src="https://maps.google.com/maps?q=Asian%20Institute%20of%20Nursing%20Education&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            className="w-full h-full min-h-[400px] border-0 filter invert-[90%] hue-rotate-180 contrast-[100%] transition-all duration-500 group-hover:invert-0 group-hover:hue-rotate-0"
+            loading="lazy"
+            title="AINE Campus Map"
+          />
+
+          {/* Overlay Card - Adapted for Premium Dark Canvas placement */}
+          <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 transition-transform duration-300 group-hover:translate-y-[-4px]">
+            <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/10 shadow-xl">
+              <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                <MapPin size={18} />
+              </div>
+
+              <div>
+                <p className="text-sm font-bold text-white tracking-wide">
+                  Our Campus
+                </p>
+                <p className="text-xs font-medium text-slate-400 mt-0.5">
+                  North Guwahati, Assam, India
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

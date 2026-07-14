@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight, BriefcaseBusiness, Building2 } from "lucide-react";
+import SectionHeader from "@/components/section/SectionHeader";
+import PrimaryCta from "@/components/button/PrimaryCta";
+import { scrollToSection } from "@/lib/scrollToSection";
 
 const slides = [
   {
@@ -85,35 +88,30 @@ export default function PlacementsHero() {
       {/* Content */}
       <div className="relative z-20 mx-auto flex h-full max-w-7xl items-center px-6">
         <div className="max-w-3xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm text-white backdrop-blur-md">
-            <BriefcaseBusiness className="h-4 w-4" />
-            Career Development & Placements
-          </div>
+          <SectionHeader text="Career Development & Placements" />
 
-          <h1 className="whitespace-pre-line text-5xl font-bold leading-tight text-white md:text-7xl">
+          <h1 className="whitespace-pre-line mt-10 text-5xl font-bold leading-tight text-white md:text-6xl">
             {slides[current].title}
           </h1>
 
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/85 md:text-xl">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-white/85 md:text-lg">
             {slides[current].subtitle}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-5">
-            <Link
-              href="/placements/statistics"
-              className="group inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-4 text-white transition hover:bg-primary-dark"
-            >
-              Placement Statistics
-              <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
-            </Link>
+            <div onClick={() => scrollToSection("recent-placements")}>
+              <PrimaryCta text="View Recent Placements" />
+            </div>
 
-            <Link
-              href="/placements/recruiters"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-7 py-4 text-white backdrop-blur-md transition hover:bg-white hover:text-black"
+            {/* Secondary CTA */}
+            <div
+              onClick={() => scrollToSection("recruiting-partners")}
+              className="px-6 py-3 cursor-pointer rounded-md border transition-all duration-500 hover:scale-105 border-white/20 text-white font-semibold tracking-wide 
+                bg-white/5 backdrop-blur-lg 
+                hover:bg-white/10"
             >
-              <Building2 className="h-5 w-5" />
-              Recruiting Partners
-            </Link>
+              Our Recruiting Partners
+            </div>
           </div>
         </div>
       </div>

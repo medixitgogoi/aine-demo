@@ -3,7 +3,7 @@ import { pillars } from "@/utils/pillars";
 
 export default function Mission() {
   return (
-    <section className="bg-background-dark/1 py-32 px-6 md:px-15 overflow-hidden">
+    <section id="mission" className="bg-background-dark/1 py-32 px-6 md:px-15 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Top Section: Content and Cards Side-by-Side */}
         <div className="grid gap-16 lg:gap-20 lg:grid-cols-[420px_1fr] items-start">

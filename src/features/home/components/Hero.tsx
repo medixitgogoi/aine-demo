@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import SectionHeader from "@/components/section/SectionHeader";
+import PrimaryCta from "@/components/button/PrimaryCta";
 
 const images = [
   "/images/hero/hero1.jpg",
   "/images/hero/hero2.jpg",
-  "/images/hero/hero3.jpg",
+  "/images/highlights/h2.png",
 ];
 
 const Hero = () => {
@@ -54,22 +55,18 @@ const Hero = () => {
         <div className="mx-auto w-full max-w-7xl px-6 lg:px-12">
           <div className="max-w-2xl md:pt-20">
             {/* Badge */}
-            <div className="mb-6 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 backdrop-blur-md">
-              <span className="text-sm font-medium tracking-wide text-white">
-                Excellence in Nursing Education Since 2007
-              </span>
-            </div>
+            <SectionHeader text="Excellence Since 2007" />
 
             {/* Heading */}
-            <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl lg:text-6xl">
+            <h2 className="mt-8 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-[52px]">
               Building Compassionate
               <span className="block text-secondary">
                 Healthcare Professionals
               </span>
-            </h1>
+            </h2>
 
             {/* Description */}
-            <p className="mt-8 max-w-xl text-lg leading-8 text-white/85 md:text-xl">
+            <p className="mt-8 max-w-xl text-lg leading-8 text-white/65 md:text-[18px]">
               AINE empowers future nurses through world-class education,
               advanced clinical training, experienced faculty, and a commitment
               to excellence in healthcare.
@@ -77,49 +74,18 @@ const Hero = () => {
 
             {/* CTA */}
             <div className="mt-10 flex flex-wrap gap-5">
-              <Link
-                href="/admissions"
-                className="group inline-flex items-center gap-2 rounded-full bg-button-primary px-8 py-4 font-semibold text-white hover:bg-button-primary-hover transition hover:scale-105"
-              >
-                Apply Now
-                <ArrowRight
-                  size={18}
-                  className="transition group-hover:translate-x-1"
-                />
-              </Link>
+              <PrimaryCta href="#" text="Apply Now" />
 
+              {/* Secondary CTA */}
               <Link
-                href="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+                href="/contact"
+                className="px-6 py-3 cursor-pointer rounded-md border transition-all duration-500 hover:scale-105 border-white/20 text-white font-semibold tracking-wide 
+                bg-white/5 backdrop-blur-lg 
+                hover:bg-white/10"
               >
-                <PlayCircle size={20} />
-                Explore Campus
+                Contact Us
               </Link>
             </div>
-
-            {/* Stats */}
-            {/* <div className="mt-16 flex flex-wrap gap-10">
-              <div>
-                <h3 className="text-3xl font-bold text-white">20+</h3>
-                <p className="mt-1 text-sm uppercase tracking-wider text-white/70">
-                  Years of Excellence
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-3xl font-bold text-white">5000+</h3>
-                <p className="mt-1 text-sm uppercase tracking-wider text-white/70">
-                  Successful Alumni
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-3xl font-bold text-white">100%</h3>
-                <p className="mt-1 text-sm uppercase tracking-wider text-white/70">
-                  Clinical Exposure
-                </p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -138,14 +104,6 @@ const Hero = () => {
           />
         ))}
       </div>
-
-      {/* Scroll Indicator */}
-      {/* <div className="absolute bottom-10 right-10 z-30 hidden lg:flex flex-col items-center text-white/70">
-        <span className="mb-3 rotate-90 text-xs uppercase tracking-[0.3em]">
-          Scroll
-        </span>
-        <div className="h-14 w-[1px] bg-white/50"></div>
-      </div> */}
     </section>
   );
 };

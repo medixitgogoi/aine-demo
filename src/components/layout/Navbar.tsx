@@ -2,21 +2,36 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, CreditCard } from "lucide-react";
 import { navLinks } from "@/utils/nav-links";
 import Link from "next/link";
+import PrimaryCta from "../button/PrimaryCta";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 10) {
+        // Absolute top of page -> always show full unscrolled state
+        setScrolled(false);
+      } else if (currentScrollY > lastScrollY.current) {
+        // Scrolling DOWN -> compress navbar to save space
+        setScrolled(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        // Scrolling UP -> seamlessly return to beautiful unscrolled state
+        setScrolled(false);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -31,133 +46,152 @@ const Navbar = () => {
     }, 150);
   };
 
+  const baseClasses =
+    "group w-max inline-flex items-center justify-center px-6 py-3 border border-white/80 cursor-pointer rounded-md bg-cta hover:bg-hover-cta text-black font-semibold tracking-wide shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-500 hover:scale-105";
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-md text-gray-800 border-b border-gray-100"
-          : "bg-linear-to-b from-white/95 via-white/90 via-white/75 via-white/50 to-transparent pb-5"
+      className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+        scrolled ? "py-2" : "py-4"
       }`}
     >
-      <div className="container-custom flex items-center justify-between py-2 px-8">
+      <div
+        className={`mx-auto w-full max-w-7xl pointer-events-auto rounded-xl flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.04)] border border-gray-200/40 py-1.5 px-5 scale-[0.98]"
+            : "bg-white backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.04)] border border-transparent py-4 px-6 scale-100"
+        }`}
+      >
         {/* LOGO */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link
+          href="/"
+          className="flex items-center gap-3 active:scale-95 transition-transform shrink-0"
+        >
           <Image
             src="/images/logos/client-logo-dark-no-bg.png"
             alt="AINE Logo"
-            width={120}
-            height={50}
+            width={scrolled ? 95 : 115}
+            height={scrolled ? 38 : 46}
             priority
+            className="object-contain transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
           />
         </Link>
 
-        {/* NAV LINKS */}
-        <nav className="hidden lg:flex items-center gap-8">
+        {/* COMPACT FLOATING NAV LINKS */}
+        <nav
+          className={`hidden lg:flex items-center gap-1 bg-gray-900/5 dark:bg-black/5 p-1 rounded-lg border border-black/[0.02] transition-all duration-500 ${
+            scrolled ? "h-8" : "h-10"
+          }`}
+        >
           {navLinks.map((link) => {
-            // Check if this link configuration has dropdown items
             if (link.dropdownItems) {
               return (
                 <div
                   key={link.name}
-                  className="relative h-full py-4"
+                  className="relative flex items-center h-full"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
                   <button
-                    className="flex items-center gap-1 text-base font-semibold text-gray-800 hover:text-primary transition-colors cursor-pointer focus:outline-none"
+                    className={`flex items-center gap-1.5 px-4 py-1 rounded-md font-bold tracking-wide transition-all duration-300 cursor-pointer focus:outline-none ${
+                      scrolled ? "text-[11px]" : "text-[13px]"
+                    } ${
+                      dropdownOpen
+                        ? scrolled
+                          ? "bg-white text-primary shadow-xs"
+                          : "bg-gray-900 text-white shadow-sm"
+                        : scrolled
+                          ? "text-gray-800 hover:text-gray-900 hover:bg-white/50"
+                          : "text-gray-900 hover:text-primary hover:bg-gray-900/5"
+                    }`}
                   >
                     {link.name}
                     <ChevronDown
-                      className={`size-4 transition-transform duration-300 ${
-                        dropdownOpen ? "rotate-180 text-primary" : "text-gray-500"
+                      className={`transition-transform duration-300 ease-out ${
+                        scrolled ? "size-3" : "size-3.5"
+                      } ${
+                        dropdownOpen
+                          ? "rotate-180 " +
+                            (scrolled ? "text-primary" : "text-white")
+                          : scrolled
+                            ? "text-gray-400"
+                            : "text-gray-600"
                       }`}
                     />
                   </button>
 
-                  {/* DROPDOWN MENU */}
+                  {/* HIGH-END DROPDOWN MENU */}
                   <div
-                    className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%-5px)] w-88 bg-white border border-gray-100 rounded-2xl shadow-xl p-3 transition-all duration-300 transform origin-top ${
+                    className={`absolute left-1/2 -translate-x-1/2 top-full pt-2.5 w-84 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       dropdownOpen
-                        ? "opacity-100 scale-100 pointer-events-auto"
-                        : "opacity-0 scale-95 pointer-events-none"
+                        ? "opacity-100 translate-y-0 pointer-events-auto"
+                        : "opacity-0 -translate-y-1.5 pointer-events-none"
                     }`}
                   >
-                    <div className="grid gap-1">
-                      {link.dropdownItems.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className="flex items-start gap-3 p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 group"
-                          >
-                            <div className="p-2 bg-gray-100 rounded-lg group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
-                              <Icon className="size-5 text-gray-600 group-hover:text-primary" />
-                            </div>
-                            <div>
-                              <p className="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors leading-tight">
-                                {item.name}
-                              </p>
-                              <p className="text-xs text-gray-500 mt-0.5 whitespace-nowrap">
-                                {item.desc}
-                              </p>
-                            </div>
-                          </Link>
-                        );
-                      })}
+                    <div className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2">
+                      <div className="grid gap-1">
+                        {link.dropdownItems.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 hover:bg-gray-50 group"
+                            >
+                              <div className="p-2 bg-gray-100 rounded-lg group-hover:bg-primary/10 group-hover:text-primary transition-colors shrink-0">
+                                <Icon className="size-4.5 text-gray-600 group-hover:text-primary transition-colors" />
+                              </div>
+                              <div className="flex flex-col space-y-0.5">
+                                {/* Increased menu item name to sharp 13px */}
+                                <p className="text-[13px] font-bold text-gray-900 group-hover:text-primary transition-colors leading-tight">
+                                  {item.name}
+                                </p>
+                                {/* Increased menu item description to crisp 11px */}
+                                <p className="text-[11px] text-gray-500 font-normal leading-normal">
+                                  {item.desc}
+                                </p>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             }
 
-            // Normal standalone links
             return (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="text-base font-semibold text-gray-800 hover:text-primary transition-colors"
+                className={`font-bold tracking-wide px-4 py-1 rounded-md transition-all duration-300 ${
+                  scrolled
+                    ? "text-[11px] text-gray-800 hover:text-gray-900 hover:bg-white/40"
+                    : "text-[13px] text-gray-900 hover:text-primary hover:bg-gray-900/5"
+                }`}
               >
                 {link.name}
-              </a>
+              </Link>
             );
           })}
         </nav>
 
-        {/* RIGHT SECTION */}
-        <div className="flex items-center gap-4">
-          {/* SEARCH BAR */}
-          <div className="hidden md:flex text-black items-center bg-white/60 border border-black/30 rounded-full px-4 py-2 transition-all duration-200 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 text-muted mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-
-            <input
-              type="text"
-              placeholder="Search..."
-              className="bg-transparent outline-none text-black text-sm w-40 placeholder:text-black"
-            />
-          </div>
-
-          {/* APPLY NOW CTA */}
-          <a
-            href="#apply"
-            className="text-base font-semibold flex flex-row items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-yellow-300 text-black shadow-sm transition-all duration-300 hover:bg-primary-light hover:shadow-md active:scale-[0.98]"
+        {/* ACTION BLOCKS */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          <Link
+            href="https://eazypay.icicibank.com/eazypayLink?P1=qiWVuBIRRKK+HBil4ZjdBA=="
+            target="_blank"
+            className={
+              "group w-max inline-flex items-center justify-center px-6 py-3 cursor-pointer rounded-full bg-cta text-sm hover:bg-hover-cta text-black font-semibold tracking-wide shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-500 hover:scale-105"
+            }
           >
-            Apply Now
-            <ArrowUpRight className="size-5" />
-          </a>
+            <CreditCard
+              size={20}
+              className="mr-2 transition-all duration-500 group-hover:scale-110"
+            />
+            Fees Payment
+          </Link>
         </div>
       </div>
     </header>

@@ -9,8 +9,8 @@ const page = () => {
     <main className="flex flex-col items-center justify-center w-full h-full">
       <Hero />
       <AdmissionCriteria />
-      <ApplicationProcedure />
       <SelectionProcess />
+      <ApplicationProcedure />
     </main>
   );
 };

@@ -4,14 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Mail, Phone, Clock3, ArrowUpRight } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa6";
+import { scrollToSection } from "@/lib/scrollToSection";
 
 const quickLinks = [
-  { name: "About AINE", href: "/about" },
-  { name: "Objectives", href: "/objectives" },
-  { name: "Mission & Vision", href: "/mission-vision" },
-  { name: "Awards & Achievements", href: "/awards" },
-  { name: "Facilities", href: "/facilities" },
-  { name: "Fees Payment", href: "/fees-payment" },
+  { name: "About AINE", href: "/about#about" },
+  { name: "Objectives", href: "/about#objectives" },
+  { name: "Mission & Vision", href: "/about#mission" },
+  { name: "Awards & Achievements", href: "/about#awards" },
+  { name: "Accreditation", href: "/about#accreditation" },
+  {
+    name: "Fees Payment",
+    href: "https://eazypay.icicibank.com/eazypayLink?P1=qiWVuBIRRKK+HBil4ZjdBA==",
+    target: true,
+  },
 ];
 
 export default function Footer() {
@@ -61,18 +66,19 @@ export default function Footer() {
                 },
                 {
                   icon: <FaInstagram className="h-4 w-4" />,
-                  href: "#",
+                  href: "https://www.instagram.com/ainenursinginstitute?igsh=MTIyOTQxdTltbHp4bA%3D%3D&utm_source=qr",
                   name: "Instagram",
                 },
                 {
                   icon: <FaFacebookF className="h-4 w-4" />,
-                  href: "#",
+                  href: "https://www.facebook.com/asianinstituteofnursingeducationaine",
                   name: "Facebook",
                 },
               ].map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
+                  target="_blank"
                   aria-label={item.name}
                   className="flex h-9 w-9 items-center justify-center border border-white/10 bg-white/[0.02] text-slate-400 transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white rounded-full cursor-pointer"
                 >
@@ -96,6 +102,8 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
+                    target={link.target ? "_blank" : undefined}
+                    rel={link.target ? "noopener noreferrer" : undefined}
                     className="group flex items-center justify-between text-sm text-slate-400 transition-colors duration-200 hover:text-card-light-bg cursor-pointer"
                   >
                     <span className="relative py-0.5">
@@ -123,10 +131,14 @@ export default function Footer() {
                 <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center border border-white/5 bg-white/[0.01] text-slate-400 group-hover:text-card-light-bg group-hover:border-card-light-bg/40 transition-colors rounded-full">
                   <MapPin className="h-4 w-4" />
                 </div>
-                <p className="text-sm leading-relaxed text-slate-400 transition-colors group-hover:text-card-light-bg">
+                <Link
+                  href="https://www.google.com/maps?cid=12017386506753153596&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-GB&source=embed"
+                  target="_blank"
+                  className="text-sm leading-relaxed text-slate-400 transition-colors group-hover:text-card-light-bg"
+                >
                   IIT Road, Near IIT Sila Grant, Adjacent to GNRC Hospitals,
                   North Guwahati – 781031, Assam
-                </p>
+                </Link>
               </div>
 
               <div className="flex items-start gap-4 group">

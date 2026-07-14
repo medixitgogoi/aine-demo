@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageSquare } from "lucide-react";
+import SectionHeader from "@/components/section/SectionHeader";
+import PrimaryCta from "@/components/button/PrimaryCta";
+import Link from "next/link";
+import StatsSection from "./StatsSection";
 
 const stats = [
   { value: "761+", label: "B.Sc Nursing Graduates" },
@@ -10,7 +14,7 @@ const stats = [
 
 const AboutSection = () => {
   return (
-    <section className="bg-background py-28">
+    <section className="bg-background-dark/1 py-28">
       <div className="container-custom px-6">
         <div className="grid items-center gap-20 lg:grid-cols-2">
           {/* ================= LEFT ================= */}
@@ -19,13 +23,13 @@ const AboutSection = () => {
             <div className="absolute -left-8 -top-8 h-full w-full rounded-[32px] bg-secondary" />
 
             {/* Main Image */}
-            <div className="relative overflow-hidden rounded-[32px] border border-border bg-card shadow-xl">
+            <div className="relative group overflow-hidden rounded-4xl border-4 border-[#fff] shadow-xl transition duration-500 ease-out  bg-card">
               <Image
                 src="https://images.pexels.com/photos/8460157/pexels-photo-8460157.jpeg"
                 alt="AINE Students"
                 width={700}
                 height={800}
-                className="h-[620px] w-full object-cover"
+                className="h-[620px] w-full object-cover transition duration-500 group-hover:scale-105"
               />
             </div>
 
@@ -41,15 +45,17 @@ const AboutSection = () => {
           {/* ================= RIGHT ================= */}
           <div>
             {/* Badge */}
-            <span className="inline-flex rounded-full bg-accent px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            {/* <span className="inline-flex rounded-full bg-accent px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
               About AINE
-            </span>
+            </span> */}
+            <SectionHeader text="About AINE" />
 
             {/* Heading */}
             <h2 className="mt-6 max-w-xl text-4xl font-bold leading-tight text-foreground md:text-5xl">
-              Empowering future{" "}
-              <span className="text-primary">healthcare professionals</span>{" "}
-              through excellence in nursing education.
+              Empowering future healthcare professionals{" "}
+              <span className="text-primary">
+                through excellence in nursing education.
+              </span>
             </h2>
 
             {/* Description */}
@@ -61,34 +67,30 @@ const AboutSection = () => {
               values and clinical excellence.
             </p>
 
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            {/* <p className="mt-6 text-lg leading-8 text-muted-foreground font-regular">
               With experienced faculty, advanced laboratories, hospital
               partnerships, and a student-first learning environment, AINE
               prepares compassionate and highly skilled nurses ready to serve
               communities across India and around the world.
-            </p>
-
-            {/* Statistics */}
-            <div className="mt-10 grid grid-cols-2 gap-5">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg"
-                >
-                  <h3 className="text-3xl font-bold text-primary">
-                    {stat.value}
-                  </h3>
-
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+            </p> */}
 
             {/* CTA */}
             <div className="mt-12 flex flex-wrap gap-4">
-              <a
+              <PrimaryCta href="/about" text="Discover AINE" />
+
+              {/* Secondary CTA */}
+              {/* Secondary CTA */}
+              <Link
+                href="/contact"
+                className="px-5 py-2.5 cursor-pointer rounded-lg border transition-all duration-300 font-bold tracking-wide text-xs flex items-center justify-center gap-2
+  border-gray-300 text-gray-800 bg-gray-50/50
+  hover:bg-white/80 hover:text-gray-900 hover:border-gray-300
+  active:scale-[0.98]"
+              >
+                <MessageSquare className="size-3.5 text-gray-500 transition-colors group-hover:text-gray-900" />
+                Contact Us
+              </Link>
+              {/* <a
                 href="#apply"
                 className="inline-flex items-center gap-2 rounded-xl bg-button-primary px-7 py-3.5 font-semibold text-primary-foreground transition-all duration-300 hover:bg-button-primary-hover hover:shadow-lg"
               >
@@ -101,7 +103,7 @@ const AboutSection = () => {
                 className="inline-flex items-center rounded-xl border border-border bg-orange px-7 py-3.5 font-semibold text-foreground transition-all duration-300 hover:border-primary hover:text-primary"
               >
                 Explore Courses
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import ClericalStaff from "@/features/administration/components/ClericalStaff";
 
 const page = () => {
   return (
-    <main className="bg-background text-foreground overflow-hidden pt-30">
+    <main className="bg-background text-foreground overflow-hidden">
       <Administration />
       <ClericalStaff />
     </main>
